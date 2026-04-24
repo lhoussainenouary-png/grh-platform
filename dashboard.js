@@ -9,7 +9,7 @@
 // =====================================================
 // URL publique du Google Sheet exporté en CSV
 // Format : https://docs.google.com/spreadsheets/d/VOTRE_ID_SHEET/export?format=csv
-const CSV_URL = 'https://docs.google.com/spreadsheets/d/VOTRE_ID_SHEET/export?format=csv';
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSDwdCHON3Z5Edx2JB4J7mcB4TZZnBo_HppBini88L4qVVKAjlutMIGCYf-SPlgBXjxk1RJGbg6KLoX/pub?output=csv';
 
 // Mot de passe pour accéder au dashboard
 const PASSWORD = 'GESI2026';
@@ -208,12 +208,12 @@ function updateKPIs(data) {
   const total = data.length;
   totalResponsesEl.textContent = total;
 
-  // Calcule le score moyen global (Q6-Q33, échelle 1-4)
+  // Calcule le score moyen global (q6-q33, échelle 1-4)
   let scoreSum = 0;
   let scoreCount = 0;
 
   for (let i = 6; i <= 33; i++) {
-    const key = 'Q' + i;
+    const key = 'q' + i;
     for (const row of data) {
       const value = parseFloat(row[key]);
       if (!isNaN(value) && value >= 1 && value <= 4) {
@@ -228,7 +228,7 @@ function updateKPIs(data) {
 
   // Taux de participation (simulé - à adapter selon votre contexte)
   // Ici on affiche juste le nombre de réponses complètes
-  const completeResponses = data.filter(row => row['Q1_Filiere'] && row['Q35_Ameliorations']).length;
+  const completeResponses = data.filter(row => row['q1'] && row['q35']).length;
   participationRateEl.textContent = completeResponses;
 }
 
@@ -268,7 +268,7 @@ function createFilieresChart(data) {
   const filieres = {};
 
   data.forEach(row => {
-    const filiere = row['Q1_Filiere'] || 'Non spécifié';
+    const filiere = row['q1'] || 'Non spécifié';
     filieres[filiere] = (filieres[filiere] || 0) + 1;
   });
 
@@ -319,7 +319,7 @@ function createNiveauEtudesChart(data) {
   const order = ['Bac', 'Bac+2', 'Bac+3', 'Bac+5', 'Bac+8'];
 
   data.forEach(row => {
-    const niveau = row['Q2_Niveau_Etudes'] || 'Non spécifié';
+    const niveau = row['q2'] || 'Non spécifié';
     niveaux[niveau] = (niveaux[niveau] || 0) + 1;
   });
 
@@ -379,7 +379,7 @@ function createAncienneteChart(data) {
   const anciennetes = {};
 
   data.forEach(row => {
-    const anciennete = row['Q3_Anciennete'] || 'Non spécifié';
+    const anciennete = row['q3'] || 'Non spécifié';
     anciennetes[anciennete] = (anciennetes[anciennete] || 0) + 1;
   });
 
@@ -426,7 +426,7 @@ function createHierarchiqueChart(data) {
   const hierarchiques = {};
 
   data.forEach(row => {
-    const niveau = row['Q4_Niveau_Hierarchique'] || 'Non spécifié';
+    const niveau = row['q4'] || 'Non spécifié';
     hierarchiques[niveau] = (hierarchiques[niveau] || 0) + 1;
   });
 
@@ -472,12 +472,12 @@ function createHierarchiqueChart(data) {
  */
 function createClarteChart(data) {
   const questions = {
-    'Q6': 'Objectifs clairs',
-    'Q7': 'Priorités comprises',
-    'Q8': 'Instructions précises',
-    'Q9': 'Délais communiqués',
-    'Q10': 'Contribution comprise',
-    'Q11': 'Changements expliqués'
+    'q6': 'Objectifs clairs',
+    'q7': 'Priorités comprises',
+    'q8': 'Instructions précises',
+    'q9': 'Délais communiqués',
+    'q10': 'Contribution comprise',
+    'q11': 'Changements expliqués'
   };
 
   const averages = {};
@@ -557,7 +557,7 @@ function createDimensionsChart(data) {
     let count = 0;
 
     for (let i = dimensions[dim].start; i <= dimensions[dim].end; i++) {
-      const qKey = 'Q' + i;
+      const qKey = 'q' + i;
       data.forEach(row => {
         const value = parseFloat(row[qKey]);
         if (!isNaN(value) && value >= 1 && value <= 4) {

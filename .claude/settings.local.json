@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(curl -s -I \"https://docs.google.com/spreadsheets/d/e/2PACX-1vSDwdCHON3Z5Edx2JB4J7mcB4TZZnBo_HppBini88L4qVVKAjlutMIGCYf-SPlgBXjxk1RJGbg6KLoX/pub?output=csv\")",
+      "Bash(curl -s -L \"https://docs.google.com/spreadsheets/d/e/2PACX-1vSDwdCHON3Z5Edx2JB4J7mcB4TZZnBo_HppBini88L4qVVKAjlutMIGCYf-SPlgBXjxk1RJGbg6KLoX/pub?output=csv\")"
+    ]
+  }
+}

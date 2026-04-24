@@ -6,7 +6,7 @@
 // =====================================================
 // CONFIGURATION - À modifier avec votre URL Google Apps Script
 // =====================================================
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/VOTRE_ID_DE_SCRIPT/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby9rE7S8RKqsdbIN0oTGWEzvQ4ouKIqjZ0t7ic_nJwUZXMAzMBLacpaSFzg0yYyv7FJ5g/exec';
 
 // =====================================================
 // Éléments du DOM
@@ -14,6 +14,137 @@ const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/VOTRE_ID_DE_SCRIPT
 const surveyForm = document.getElementById('surveyForm');
 const submitBtn = document.getElementById('submitBtn');
 const successMessage = document.getElementById('successMessage');
+
+// Hide the original submit button (we use custom navigation)
+if (submitBtn) {
+  submitBtn.style.display = 'none';
+}
+
+// =====================================================
+// GESTION DES SECTIONS
+// =====================================================
+let currentSection = 1;
+const totalSections = 7;
+
+/**
+ * Initialize section visibility on page load
+ */
+function initSections() {
+  // Hide all sections except the first one
+  document.querySelectorAll('.section').forEach((section, index) => {
+    if (index === 0) {
+      section.classList.add('active');
+    } else {
+      section.classList.remove('active');
+    }
+  });
+}
+
+/**
+ * Validate current section before moving to next
+ * @returns {boolean} - true if valid, false otherwise
+ */
+function validateCurrentSection() {
+  const currentSectionEl = document.querySelector(`.section[data-section="${currentSection}"]`);
+  const inputs = currentSectionEl.querySelectorAll('input[required], select[required], textarea[required]');
+
+  let isValid = true;
+  let firstInvalidInput = null;
+
+  inputs.forEach(input => {
+    if (input.type === 'radio') {
+      // For radio buttons, check if any in the group is checked
+      const radioGroup = currentSectionEl.querySelectorAll(`input[name="${input.name}"]`);
+      const isChecked = Array.from(radioGroup).some(radio => radio.checked);
+      if (!isChecked) {
+        isValid = false;
+        if (!firstInvalidInput) firstInvalidInput = radioGroup[0];
+      }
+    } else if (!input.value || input.value.trim() === '') {
+      isValid = false;
+      if (!firstInvalidInput) firstInvalidInput = input;
+    }
+  });
+
+  if (!isValid && firstInvalidInput) {
+    // Scroll to the first invalid input
+    firstInvalidInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    alert('Veuillez répondre à toutes les questions obligatoires de cette section avant de continuer.');
+  }
+
+  return isValid;
+}
+
+/**
+ * Go to a specific section
+ * @param {number} sectionNumber - The section number to navigate to
+ */
+function goToSection(sectionNumber) {
+  // Validate current section if moving forward
+  if (sectionNumber > currentSection) {
+    if (!validateCurrentSection()) {
+      return;
+    }
+  }
+
+  // Hide current section
+  const currentSectionEl = document.querySelector(`.section[data-section="${currentSection}"]`);
+  if (currentSectionEl) {
+    currentSectionEl.classList.remove('active');
+  }
+
+  // Update current section
+  currentSection = sectionNumber;
+
+  // Show new section
+  const newSectionEl = document.querySelector(`.section[data-section="${currentSection}"]`);
+  if (newSectionEl) {
+    newSectionEl.classList.add('active');
+    // Scroll to top of the section
+    newSectionEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+/**
+ * Submit the final form
+ */
+function submitFinalForm() {
+  // Validate current section first
+  if (!validateCurrentSection()) {
+    return;
+  }
+
+  // Trigger the form submission
+  surveyForm.requestSubmit();
+}
+
+// Initialize sections on page load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSections);
+} else {
+  initSections();
+}
+
+// =====================================================
+// LANDING PAGE FUNCTIONS
+// =====================================================
+
+/**
+ * Start the survey - hide landing page and show first section
+ */
+function startSurvey() {
+  const landingPage = document.getElementById('landingPage');
+  const surveyContainer = document.getElementById('surveyContainer');
+
+  if (landingPage && surveyContainer) {
+    // Hide landing page
+    landingPage.classList.add('hidden');
+    // Show survey container
+    surveyContainer.style.display = 'block';
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
 
 // =====================================================
 // Gestion de la soumission du formulaire
@@ -75,6 +206,10 @@ function setLoadingState(isLoading) {
 function showSuccessMessage() {
   surveyForm.style.display = 'none';
   successMessage.style.display = 'block';
+
+  // Also hide section navigation if present
+  const navButtons = document.querySelectorAll('.section-navigation');
+  navButtons.forEach(nav => nav.style.display = 'none');
 
   // Fait défiler la page vers le message de succès
   successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });

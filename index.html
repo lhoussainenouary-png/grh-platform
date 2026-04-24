@@ -3,28 +3,229 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Questionnaire de Communication Managériale</title>
+  <title>GRH Platform - Questionnaire de Communication Managériale</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
 
-    <!-- En-tête -->
-    <header class="header">
-      <h1>Questionnaire de Communication Managériale</h1>
-      <p class="subtitle">Enquête sur les pratiques de communication au sein de votre organisation</p>
-      <p class="description">
-        Ce questionnaire a pour objectif d'évaluer la qualité de la communication managériale
-        dans votre environnement de travail. Vos réponses sont anonymes et nous aideront à
-        identifier les axes d'amélioration. Durée estimée : 10-15 minutes.
-      </p>
-    </header>
+    <!-- Landing Page Section -->
+    <div id="landingPage" class="landing-page">
 
-    <!-- Formulaire -->
+      <!-- Hero Section -->
+      <header class="landing-header">
+        <div class="hero-content">
+          <h1>Questionnaire de Communication Managériale</h1>
+          <p class="hero-subtitle">Enquête sur les pratiques de communication au sein de votre organisation</p>
+          <div class="hero-actions">
+            <button onclick="startSurvey()" class="btn-primary">
+              Commencer le questionnaire →
+            </button>
+            <a href="#about" class="btn-secondary">En savoir plus ↓</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- About Section -->
+      <section id="about" class="info-section">
+        <div class="info-header">
+          <h2>🎯 Contexte & Objectifs</h2>
+          <p class="section-intro">
+            La communication managériale est un facteur clé de la performance organisationnelle.
+            Cet outil permet de mesurer objectivement sa qualité de manière structurée.
+          </p>
+        </div>
+
+        <div class="objectives-grid">
+          <div class="objective-card">
+            <div class="icon">📊</div>
+            <h3>Collecter des données fiables</h3>
+            <p>Sur les pratiques de communication interne dans votre organisation</p>
+          </div>
+          <div class="objective-card">
+            <div class="icon">📈</div>
+            <h3>Visualiser les résultats</h3>
+            <p>En temps réel via un tableau de bord sécurisé</p>
+          </div>
+          <div class="objective-card">
+            <div class="icon">🎯</div>
+            <h3>Identifier les axes d'amélioration</h3>
+            <p>Par dimension : Clarté, Écoute, Transparence, Cohérence, Accessibilité</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- For Respondents Section -->
+      <section id="respondents" class="info-section alt-bg">
+        <div class="info-header">
+          <h2>👥 Pour les Répondants</h2>
+          <p class="section-intro">
+            Vous êtes employé(e) et vous allez remplir ce questionnaire. Voici ce qu'il faut savoir.
+          </p>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>📋 Structure du questionnaire</h3>
+            <ul>
+              <li><strong>35 questions</strong> au total</li>
+              <li><strong>7 sections</strong> thématiques</li>
+              <li><strong>5-10 minutes</strong> pour compléter</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h3>📝 Types de questions</h3>
+            <ul>
+              <li>Questions démographiques (5 questions)</li>
+              <li>Échelle de Likert 1-4 (28 questions)</li>
+              <li>Questions ouvertes (2 questions)</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h3>🔒 Anonymat garanti</h3>
+            <ul>
+              <li>Aucun nom ou email collecté</li>
+              <li>Réponses totalement anonymes</li>
+              <li>Données sécurisées</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="likert-guide">
+          <h3>📐 Comprendre l'échelle de Likert</h3>
+          <p>La plupart des questions utilisent une échelle de 1 à 4 :</p>
+          <div class="scale-visual">
+            <div class="scale-item scale-1">
+              <span class="scale-number">1</span>
+              <span class="scale-label">Jamais / Pas du tout d'accord</span>
+            </div>
+            <div class="scale-item scale-2">
+              <span class="scale-number">2</span>
+              <span class="scale-label">Rarement / Plutôt non</span>
+            </div>
+            <div class="scale-item scale-3">
+              <span class="scale-number">3</span>
+              <span class="scale-label">Souvent / Plutôt oui</span>
+            </div>
+            <div class="scale-item scale-4">
+              <span class="scale-number">4</span>
+              <span class="scale-label">Toujours / Tout à fait d'accord</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- For HR Section -->
+      <section id="hr-info" class="info-section">
+        <div class="info-header">
+          <h2>💼 Pour les Responsables RH</h2>
+          <p class="section-intro">
+            Vous êtes responsable RH et souhaitez utiliser cet outil dans votre organisation.
+          </p>
+        </div>
+
+        <div class="hr-grid">
+          <div class="hr-card">
+            <h3>🎯 Cas d'usage</h3>
+            <ul>
+              <li>Audits internes RH</li>
+              <li>Projets de recherche académique</li>
+              <li>Plans de développement managérial</li>
+              <li>Évaluations de climat social</li>
+            </ul>
+          </div>
+          <div class="hr-card">
+            <h3>📊 Dimensions mesurées</h3>
+            <table class="dimensions-table">
+              <tr><th>Dimension</th><th>Questions</th></tr>
+              <tr><td>Clarté</td><td>Q6-Q11</td></tr>
+              <tr><td>Écoute</td><td>Q12-Q17</td></tr>
+              <tr><td>Transparence</td><td>Q18-Q23</td></tr>
+              <tr><td>Cohérence</td><td>Q24-Q29</td></tr>
+              <tr><td>Accessibilité</td><td>Q30-Q33</td></tr>
+            </table>
+          </div>
+          <div class="hr-card">
+            <h3>📈 Interprétation des scores</h3>
+            <div class="score-guide">
+              <div class="score-row critical"><span class="score-range">1.0-1.9</span> <span>Critique</span></div>
+              <div class="score-row poor"><span class="score-range">2.0-2.4</span> <span>Insuffisant</span></div>
+              <div class="score-row developing"><span class="score-range">2.5-2.9</span> <span>En développement</span></div>
+              <div class="score-row good"><span class="score-range">3.0-3.4</span> <span>Satisfaisant</span></div>
+              <div class="score-row excellent"><span class="score-range">3.5-4.0</span> <span>Excellent</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hr-actions">
+          <h3>🚀 Prochaines étapes</h3>
+          <ol>
+            <li>Partagez le lien du questionnaire avec vos équipes</li>
+            <li>Attendez les réponses (minimum 5-10 recommandés)</li>
+            <li>Accédez au dashboard avec le mot de passe</li>
+            <li>Analysez les résultats et définissez un plan d'action</li>
+          </ol>
+          <div class="dashboard-access">
+            <a href="dashboard.html" class="btn-dashboard">Accéder au Dashboard</a>
+            <p class="access-note">Mot de passe requis : <code>GESI2026</code></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Privacy Section -->
+      <section id="privacy" class="info-section alt-bg">
+        <div class="info-header">
+          <h2>🔒 Confidentialité des Données</h2>
+        </div>
+        <div class="privacy-content">
+          <div class="privacy-item">
+            <strong>Données collectées :</strong>
+            <span>Uniquement des informations démographiques et des évaluations. Aucun identifiant personnel.</span>
+          </div>
+          <div class="privacy-item">
+            <strong>Stockage :</strong>
+            <span>Google Sheets sécurisé via Google Apps Script</span>
+          </div>
+          <div class="privacy-item">
+            <strong>Accès :</strong>
+            <span>Réservé aux administrateurs autorisés (mot de passe requis)</span>
+          </div>
+          <div class="privacy-item">
+            <strong>Conservation :</strong>
+            <span>Durée de l'étude. Suppression possible sur demande.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer CTA -->
+      <div class="landing-cta">
+        <h2>Prêt(e) à participer ?</h2>
+        <p>Vos réponses contribueront à l'amélioration des pratiques de communication managériale.</p>
+        <button onclick="startSurvey()" class="btn-primary btn-large">
+          Commencer le questionnaire
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Survey Form (hidden initially) -->
+    <div id="surveyContainer" style="display: none;">
+
+    <!-- Progress Indicator -->
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-text">
+        <span id="currentSectionNum">1</span> / <span id="totalSections">7</span>
+        <span class="section-name" id="sectionName">Section I - Profil</span>
+      </div>
+    </div>
+
     <form id="surveyForm">
 
       <!-- SECTION I : Profil du répondant (Q1-Q5) -->
-      <div class="section">
+      <div class="section" data-section="1">
         <div class="section-header">
           <h2>Section I - Profil du répondant</h2>
           <p>Informations générales vous concernant</p>
@@ -112,10 +313,17 @@
             <option value="55 ans et plus">55 ans et plus</option>
           </select>
         </div>
+
+        <!-- Navigation buttons -->
+        <div class="section-navigation">
+          <button type="button" class="btn-next" onclick="goToSection(2)">
+            Section II →
+          </button>
+        </div>
       </div>
 
       <!-- SECTION II : Clarté de la communication (Q6-Q11) -->
-      <div class="section">
+      <div class="section" data-section="2">
         <div class="section-header">
           <h2>Section II - Clarté de la communication</h2>
           <p>Évaluez la clarté des informations transmises par votre management</p>
@@ -281,10 +489,20 @@
             </div>
           </div>
         </div>
+
+        <!-- Navigation buttons -->
+        <div class="section-navigation">
+          <button type="button" class="btn-prev" onclick="goToSection(1)">
+            ← Section I
+          </button>
+          <button type="button" class="btn-next" onclick="goToSection(3)">
+            Section III →
+          </button>
+        </div>
       </div>
 
       <!-- SECTION III : Fréquence de la communication (Q12-Q16) -->
-      <div class="section">
+      <div class="section" data-section="3">
         <div class="section-header">
           <h2>Section III - Fréquence de la communication</h2>
           <p>Évaluez la régularité des échanges avec votre management</p>
@@ -424,10 +642,20 @@
             </div>
           </div>
         </div>
+
+        <!-- Navigation buttons -->
+        <div class="section-navigation">
+          <button type="button" class="btn-prev" onclick="goToSection(2)">
+            ← Section II
+          </button>
+          <button type="button" class="btn-next" onclick="goToSection(4)">
+            Section IV →
+          </button>
+        </div>
       </div>
 
       <!-- SECTION IV : Qualité de l'écoute (Q17-Q21) -->
-      <div class="section">
+      <div class="section" data-section="4">
         <div class="section-header">
           <h2>Section IV - Qualité de l'écoute managériale</h2>
           <p>Évaluez la capacité d'écoute de votre management</p>
@@ -567,10 +795,20 @@
             </div>
           </div>
         </div>
+
+        <!-- Navigation buttons -->
+        <div class="section-navigation">
+          <button type="button" class="btn-prev" onclick="goToSection(3)">
+            ← Section III
+          </button>
+          <button type="button" class="btn-next" onclick="goToSection(5)">
+            Section V →
+          </button>
+        </div>
       </div>
 
       <!-- SECTION V : Canaux et outils de communication (Q22-Q27) -->
-      <div class="section">
+      <div class="section" data-section="5">
         <div class="section-header">
           <h2>Section V - Canaux et outils de communication</h2>
           <p>Évaluez l'efficacité des moyens de communication utilisés</p>
@@ -736,10 +974,20 @@
             </div>
           </div>
         </div>
+
+        <!-- Navigation buttons -->
+        <div class="section-navigation">
+          <button type="button" class="btn-prev" onclick="goToSection(4)">
+            ← Section IV
+          </button>
+          <button type="button" class="btn-next" onclick="goToSection(6)">
+            Section VI →
+          </button>
+        </div>
       </div>
 
       <!-- SECTION VI : Impact de la communication (Q28-Q33) -->
-      <div class="section">
+      <div class="section" data-section="6">
         <div class="section-header">
           <h2>Section VI - Impact de la communication managériale</h2>
           <p>Évaluez l'impact de la communication sur votre travail</p>
@@ -905,10 +1153,20 @@
             </div>
           </div>
         </div>
+
+        <!-- Navigation buttons -->
+        <div class="section-navigation">
+          <button type="button" class="btn-prev" onclick="goToSection(5)">
+            ← Section V
+          </button>
+          <button type="button" class="btn-next" onclick="goToSection(7)">
+            Section VII →
+          </button>
+        </div>
       </div>
 
       <!-- SECTION VII : Questions ouvertes (Q34-Q35) -->
-      <div class="section">
+      <div class="section" data-section="7">
         <div class="section-header">
           <h2>Section VII - Questions ouvertes</h2>
           <p>Exprimez-vous librement sur votre expérience</p>
@@ -931,9 +1189,19 @@
           </label>
           <textarea name="q35" id="q35" rows="5" placeholder="Partagez vos suggestions et idées d'amélioration..."></textarea>
         </div>
+
+        <!-- Navigation buttons -->
+        <div class="section-navigation">
+          <button type="button" class="btn-prev" onclick="goToSection(6)">
+            ← Section VI
+          </button>
+          <button type="button" class="btn-submit-final" onclick="submitFinalForm()">
+            Soumettre le questionnaire ✓
+          </button>
+        </div>
       </div>
 
-      <!-- Bouton de soumission -->
+      <!-- Bouton de soumission (hidden, used by JS) -->
       <div class="form-actions">
         <button type="submit" class="btn-submit" id="submitBtn">
           Envoyer mes réponses
@@ -947,13 +1215,18 @@
       <h2>Merci pour votre participation !</h2>
       <p>Vos réponses ont été enregistrées avec succès.</p>
       <p style="margin-top: 1rem; color: #666;">Elles contribueront à l'amélioration des pratiques de communication managériale.</p>
+      <button onclick="location.reload()" class="btn-secondary" style="margin-top: 1.5rem;">Retour à l'accueil</button>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
       <p>Questionnaire de Communication Managériale &copy; 2026 - GESI</p>
+      <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #999;">
+        Développé dans le cadre d'un projet académique — Université [Nom]
+      </p>
     </footer>
 
+    </div>
   </div>
 
   <script src="form.js"></script>
