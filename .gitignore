@@ -1,0 +1,20 @@
+# =====================================================
+# .gitignore - Fichiers à ignorer
+# =====================================================
+
+# Fichier des variables d'environnement (contient des secrets)
+.env
+
+# Fichiers temporaires
+*.tmp
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

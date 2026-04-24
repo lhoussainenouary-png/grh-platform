@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionnaire de Communication Managériale</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- En-tête -->
+    <header class="header">
+      <h1>Questionnaire de Communication Managériale</h1>
+      <p class="subtitle">Enquête sur les pratiques de communication au sein de votre organisation</p>
+      <p class="description">
+        Ce questionnaire a pour objectif d'évaluer la qualité de la communication managériale
+        dans votre environnement de travail. Vos réponses sont anonymes et nous aideront à
+        identifier les axes d'amélioration. Durée estimée : 10-15 minutes.
+      </p>
+    </header>
+
+    <!-- Formulaire -->
+    <form id="surveyForm">
+
+      <!-- SECTION I : Profil du répondant (Q1-Q5) -->
+      <div class="section">
+        <div class="section-header">
+          <h2>Section I - Profil du répondant</h2>
+          <p>Informations générales vous concernant</p>
+        </div>
+
+        <!-- Q1 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q1.</span>
+            Quelle est votre filière/department ?
+          </label>
+          <select name="q1" id="q1" required>
+            <option value="">-- Sélectionnez une option --</option>
+            <option value="Ressources Humaines">Ressources Humaines</option>
+            <option value="Finance & Comptabilité">Finance & Comptabilité</option>
+            <option value="Marketing & Communication">Marketing & Communication</option>
+            <option value="Informatique & SI">Informatique & SI</option>
+            <option value="Operations & Production">Operations & Production</option>
+            <option value="Commercial & Vente">Commercial & Vente</option>
+            <option value="Direction Générale">Direction Générale</option>
+            <option value="Autre">Autre</option>
+          </select>
+        </div>
+
+        <!-- Q2 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q2.</span>
+            Quel est votre niveau d'études ?
+          </label>
+          <select name="q2" id="q2" required>
+            <option value="">-- Sélectionnez une option --</option>
+            <option value="Bac">Bac</option>
+            <option value="Bac+2">Bac+2 (BTS, DUT, DEUG)</option>
+            <option value="Bac+3">Bac+3 (Licence, Bachelor)</option>
+            <option value="Bac+5">Bac+5 (Master, Diplôme d'ingénieur)</option>
+            <option value="Bac+8">Bac+8 ou plus (Doctorat)</option>
+          </select>
+        </div>
+
+        <!-- Q3 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q3.</span>
+            Quelle est votre ancienneté dans l'entreprise ?
+          </label>
+          <select name="q3" id="q3" required>
+            <option value="">-- Sélectionnez une option --</option>
+            <option value="Moins de 1 an">Moins de 1 an</option>
+            <option value="1 à 3 ans">1 à 3 ans</option>
+            <option value="3 à 5 ans">3 à 5 ans</option>
+            <option value="5 à 10 ans">5 à 10 ans</option>
+            <option value="Plus de 10 ans">Plus de 10 ans</option>
+          </select>
+        </div>
+
+        <!-- Q4 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q4.</span>
+            Quel est votre niveau hiérarchique actuel ?
+          </label>
+          <select name="q4" id="q4" required>
+            <option value="">-- Sélectionnez une option --</option>
+            <option value="Employé / Collaborateur">Employé / Collaborateur</option>
+            <option value="Technicien / Agent de maîtrise">Technicien / Agent de maîtrise</option>
+            <option value="Cadre moyen / Manager de proximité">Cadre moyen / Manager de proximité</option>
+            <option value="Cadre dirigeant">Cadre dirigeant</option>
+            <option value="Direction générale">Direction générale</option>
+          </select>
+        </div>
+
+        <!-- Q5 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q5.</span>
+            Quel est votre âge ?
+          </label>
+          <select name="q5" id="q5" required>
+            <option value="">-- Sélectionnez une option --</option>
+            <option value="Moins de 25 ans">Moins de 25 ans</option>
+            <option value="25 à 34 ans">25 à 34 ans</option>
+            <option value="35 à 44 ans">35 à 44 ans</option>
+            <option value="45 à 54 ans">45 à 54 ans</option>
+            <option value="55 ans et plus">55 ans et plus</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- SECTION II : Clarté de la communication (Q6-Q11) -->
+      <div class="section">
+        <div class="section-header">
+          <h2>Section II - Clarté de la communication</h2>
+          <p>Évaluez la clarté des informations transmises par votre management</p>
+        </div>
+
+        <div class="likert-legend">
+          <span>1 = Pas du tout d'accord</span>
+          <span>4 = Tout à fait d'accord</span>
+        </div>
+
+        <!-- Q6 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q6.</span>
+            Les objectifs de mon équipe me sont clairement communiqués
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q6" id="q6-1" value="1" required>
+              <label for="q6-1"><span class="value">1</span><span class="text">Pas du tout</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q6" id="q6-2" value="2">
+              <label for="q6-2"><span class="value">2</span><span class="text">Plutôt non</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q6" id="q6-3" value="3">
+              <label for="q6-3"><span class="value">3</span><span class="text">Plutôt oui</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q6" id="q6-4" value="4">
+              <label for="q6-4"><span class="value">4</span><span class="text">Tout à fait</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q7.</span>
+            Je comprends bien les priorités de mon travail
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q7" id="q7-1" value="1" required>
+              <label for="q7-1"><span class="value">1</span><span class="text">Pas du tout</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q7" id="q7-2" value="2">
+              <label for="q7-2"><span class="value">2</span><span class="text">Plutôt non</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q7" id="q7-3" value="3">
+              <label for="q7-3"><span class="value">3</span><span class="text">Plutôt oui</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q7" id="q7-4" value="4">
+              <label for="q7-4"><span class="value">4</span><span class="text">Tout à fait</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q8.</span>
+            Les instructions données par mon manager sont précises et compréhensibles
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q8" id="q8-1" value="1" required>
+              <label for="q8-1"><span class="value">1</span><span class="text">Pas du tout</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q8" id="q8-2" value="2">
+              <label for="q8-2"><span class="value">2</span><span class="text">Plutôt non</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q8" id="q8-3" value="3">
+              <label for="q8-3"><span class="value">3</span><span class="text">Plutôt oui</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q8" id="q8-4" value="4">
+              <label for="q8-4"><span class="value">4</span><span class="text">Tout à fait</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q9.</span>
+            Les délais et échéances me sont communiqués suffisamment à l'avance
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q9" id="q9-1" value="1" required>
+              <label for="q9-1"><span class="value">1</span><span class="text">Pas du tout</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q9" id="q9-2" value="2">
+              <label for="q9-2"><span class="value">2</span><span class="text">Plutôt non</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q9" id="q9-3" value="3">
+              <label for="q9-3"><span class="value">3</span><span class="text">Plutôt oui</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q9" id="q9-4" value="4">
+              <label for="q9-4"><span class="value">4</span><span class="text">Tout à fait</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q10.</span>
+            Je sais comment mon travail contribue aux objectifs globaux de l'entreprise
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q10" id="q10-1" value="1" required>
+              <label for="q10-1"><span class="value">1</span><span class="text">Pas du tout</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q10" id="q10-2" value="2">
+              <label for="q10-2"><span class="value">2</span><span class="text">Plutôt non</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q10" id="q10-3" value="3">
+              <label for="q10-3"><span class="value">3</span><span class="text">Plutôt oui</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q10" id="q10-4" value="4">
+              <label for="q10-4"><span class="value">4</span><span class="text">Tout à fait</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q11 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q11.</span>
+            Les changements organisationnels me sont expliqués clairement
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q11" id="q11-1" value="1" required>
+              <label for="q11-1"><span class="value">1</span><span class="text">Pas du tout</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q11" id="q11-2" value="2">
+              <label for="q11-2"><span class="value">2</span><span class="text">Plutôt non</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q11" id="q11-3" value="3">
+              <label for="q11-3"><span class="value">3</span><span class="text">Plutôt oui</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q11" id="q11-4" value="4">
+              <label for="q11-4"><span class="value">4</span><span class="text">Tout à fait</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION III : Fréquence de la communication (Q12-Q16) -->
+      <div class="section">
+        <div class="section-header">
+          <h2>Section III - Fréquence de la communication</h2>
+          <p>Évaluez la régularité des échanges avec votre management</p>
+        </div>
+
+        <div class="likert-legend">
+          <span>1 = Jamais</span>
+          <span>4 = Très souvent</span>
+        </div>
+
+        <!-- Q12 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q12.</span>
+            Mon manager organise des réunions régulières avec l'équipe
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q12" id="q12-1" value="1" required>
+              <label for="q12-1"><span class="value">1</span><span class="text">Jamais</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q12" id="q12-2" value="2">
+              <label for="q12-2"><span class="value">2</span><span class="text">Rarement</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q12" id="q12-3" value="3">
+              <label for="q12-3"><span class="value">3</span><span class="text">Souvent</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q12" id="q12-4" value="4">
+              <label for="q12-4"><span class="value">4</span><span class="text">Très souvent</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q13 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q13.</span>
+            Je reçois des retours réguliers sur ma performance
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q13" id="q13-1" value="1" required>
+              <label for="q13-1"><span class="value">1</span><span class="text">Jamais</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q13" id="q13-2" value="2">
+              <label for="q13-2"><span class="value">2</span><span class="text">Rarement</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q13" id="q13-3" value="3">
+              <label for="q13-3"><span class="value">3</span><span class="text">Souvent</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q13" id="q13-4" value="4">
+              <label for="q13-4"><span class="value">4</span><span class="text">Très souvent</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q14 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q14.</span>
+            Les informations importantes me parviennent rapidement
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q14" id="q14-1" value="1" required>
+              <label for="q14-1"><span class="value">1</span><span class="text">Jamais</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q14" id="q14-2" value="2">
+              <label for="q14-2"><span class="value">2</span><span class="text">Rarement</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q14" id="q14-3" value="3">
+              <label for="q14-3"><span class="value">3</span><span class="text">Souvent</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q14" id="q14-4" value="4">
+              <label for="q14-4"><span class="value">4</span><span class="text">Très souvent</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q15 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q15.</span>
+            Mon manager est disponible pour des échanges individuels
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q15" id="q15-1" value="1" required>
+              <label for="q15-1"><span class="value">1</span><span class="text">Jamais</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q15" id="q15-2" value="2">
+              <label for="q15-2"><span class="value">2</span><span class="text">Rarement</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q15" id="q15-3" value="3">
+              <label for="q15-3"><span class="value">3</span><span class="text">Souvent</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q15" id="q15-4" value="4">
+              <label for="q15-4"><span class="value">4</span><span class="text">Très souvent</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q16 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q16.</span>
+            Les décisions de la direction sont communiquées dans des délais raisonnables
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q16" id="q16-1" value="1" required>
+              <label for="q16-1"><span class="value">1</span><span class="text">Jamais</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q16" id="q16-2" value="2">
+              <label for="q16-2"><span class="value">2</span><span class="text">Rarement</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q16" id="q16-3" value="3">
+              <label for="q16-3"><span class="value">3</span><span class="text">Souvent</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q16" id="q16-4" value="4">
+              <label for="q16-4"><span class="value">4</span><span class="text">Très souvent</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION IV : Qualité de l'écoute (Q17-Q21) -->
+      <div class="section">
+        <div class="section-header">
+          <h2>Section IV - Qualité de l'écoute managériale</h2>
+          <p>Évaluez la capacité d'écoute de votre management</p>
+        </div>
+
+        <div class="likert-legend">
+          <span>1 = Pas du tout d'accord</span>
+          <span>4 = Tout à fait d'accord</span>
+        </div>
+
+        <!-- Q17 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q17.</span>
+            Mon manager prend le temps d'écouter mes préoccupations
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q17" id="q17-1" value="1" required>
+              <label for="q17-1"><span class="value">1</span><span class="text">Pas du tout</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q17" id="q17-2" value="2">
+              <label for="q17-2"><span class="value">2</span><span class="text">Plutôt non</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q17" id="q17-3" value="3">
+              <label for="q17-3"><span class="value">3</span><span class="text">Plutôt oui</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q17" id="q17-4" value="4">
+              <label for="q17-4"><span class="value">4</span><span class="text">Tout à fait</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q18 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q18.</span>
+            Je me sens libre d'exprimer mes idées et suggestions
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q18" id="q18-1" value="1" required>
+              <label for="q18-1"><span class="value">1</span><span class="text">Pas du tout</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q18" id="q18-2" value="2">
+              <label for="q18-2"><span class="value">2</span><span class="text">Plutôt non</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q18" id="q18-3" value="3">
+              <label for="q18-3"><span class="value">3</span><span class="text">Plutôt oui</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q18" id="q18-4" value="4">
+              <label for="q18-4"><span class="value">4</span><span class="text">Tout à fait</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q19 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q19.</span>
+            Les feedbacks que je donne sont pris en considération
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q19" id="q19-1" value="1" required>
+              <label for="q19-1"><span class="value">1</span><span class="text">Pas du tout</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q19" id="q19-2" value="2">
+              <label for="q19-2"><span class="value">2</span><span class="text">Plutôt non</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q19" id="q19-3" value="3">
+              <label for="q19-3"><span class="value">3</span><span class="text">Plutôt oui</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q19" id="q19-4" value="4">
+              <label for="q19-4"><span class="value">4</span><span class="text">Tout à fait</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q20 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q20.</span>
+            Mon manager fait preuve d'empathie dans les situations difficiles
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q20" id="q20-1" value="1" required>
+              <label for="q20-1"><span class="value">1</span><span class="text">Pas du tout</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q20" id="q20-2" value="2">
+              <label for="q20-2"><span class="value">2</span><span class="text">Plutôt non</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q20" id="q20-3" value="3">
+              <label for="q20-3"><span class="value">3</span><span class="text">Plutôt oui</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q20" id="q20-4" value="4">
+              <label for="q20-4"><span class="value">4</span><span class="text">Tout à fait</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q21 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q21.</span>
+            Les réunions permettent de véritables échanges bidirectionnels
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q21" id="q21-1" value="1" required>
+              <label for="q21-1"><span class="value">1</span><span class="text">Pas du tout</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q21" id="q21-2" value="2">
+              <label for="q21-2"><span class="value">2</span><span class="text">Plutôt non</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q21" id="q21-3" value="3">
+              <label for="q21-3"><span class="value">3</span><span class="text">Plutôt oui</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q21" id="q21-4" value="4">
+              <label for="q21-4"><span class="value">4</span><span class="text">Tout à fait</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION V : Canaux et outils de communication (Q22-Q27) -->
+      <div class="section">
+        <div class="section-header">
+          <h2>Section V - Canaux et outils de communication</h2>
+          <p>Évaluez l'efficacité des moyens de communication utilisés</p>
+        </div>
+
+        <div class="likert-legend">
+          <span>1 = Pas efficace</span>
+          <span>4 = Très efficace</span>
+        </div>
+
+        <!-- Q22 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q22.</span>
+            Les e-mails sont utilisés de manière appropriée dans mon équipe
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q22" id="q22-1" value="1" required>
+              <label for="q22-1"><span class="value">1</span><span class="text">Pas efficace</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q22" id="q22-2" value="2">
+              <label for="q22-2"><span class="value">2</span><span class="text">Peu efficace</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q22" id="q22-3" value="3">
+              <label for="q22-3"><span class="value">3</span><span class="text">Efficace</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q22" id="q22-4" value="4">
+              <label for="q22-4"><span class="value">4</span><span class="text">Très efficace</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q23 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q23.</span>
+            Les réunions en présentiel sont bien organisées et productives
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q23" id="q23-1" value="1" required>
+              <label for="q23-1"><span class="value">1</span><span class="text">Pas efficace</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q23" id="q23-2" value="2">
+              <label for="q23-2"><span class="value">2</span><span class="text">Peu efficace</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q23" id="q23-3" value="3">
+              <label for="q23-3"><span class="value">3</span><span class="text">Efficace</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q23" id="q23-4" value="4">
+              <label for="q23-4"><span class="value">4</span><span class="text">Très efficace</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q24 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q24.</span>
+            Les outils collaboratifs (Teams, Slack, etc.) facilitent notre communication
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q24" id="q24-1" value="1" required>
+              <label for="q24-1"><span class="value">1</span><span class="text">Pas efficace</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q24" id="q24-2" value="2">
+              <label for="q24-2"><span class="value">2</span><span class="text">Peu efficace</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q24" id="q24-3" value="3">
+              <label for="q24-3"><span class="value">3</span><span class="text">Efficace</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q24" id="q24-4" value="4">
+              <label for="q24-4"><span class="value">4</span><span class="text">Très efficace</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q25 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q25.</span>
+            Les communications affichées (panneaux, intranet) sont utiles et à jour
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q25" id="q25-1" value="1" required>
+              <label for="q25-1"><span class="value">1</span><span class="text">Pas efficace</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q25" id="q25-2" value="2">
+              <label for="q25-2"><span class="value">2</span><span class="text">Peu efficace</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q25" id="q25-3" value="3">
+              <label for="q25-3"><span class="value">3</span><span class="text">Efficace</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q25" id="q25-4" value="4">
+              <label for="q25-4"><span class="value">4</span><span class="text">Très efficace</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q26 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q26.</span>
+            La communication informelle (pause café, couloirs) est valorisée
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q26" id="q26-1" value="1" required>
+              <label for="q26-1"><span class="value">1</span><span class="text">Pas efficace</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q26" id="q26-2" value="2">
+              <label for="q26-2"><span class="value">2</span><span class="text">Peu efficace</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q26" id="q26-3" value="3">
+              <label for="q26-3"><span class="value">3</span><span class="text">Efficace</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q26" id="q26-4" value="4">
+              <label for="q26-4"><span class="value">4</span><span class="text">Très efficace</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q27 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q27.</span>
+            Les canaux de communication sont adaptés au type de message transmis
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q27" id="q27-1" value="1" required>
+              <label for="q27-1"><span class="value">1</span><span class="text">Pas efficace</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q27" id="q27-2" value="2">
+              <label for="q27-2"><span class="value">2</span><span class="text">Peu efficace</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q27" id="q27-3" value="3">
+              <label for="q27-3"><span class="value">3</span><span class="text">Efficace</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q27" id="q27-4" value="4">
+              <label for="q27-4"><span class="value">4</span><span class="text">Très efficace</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION VI : Impact de la communication (Q28-Q33) -->
+      <div class="section">
+        <div class="section-header">
+          <h2>Section VI - Impact de la communication managériale</h2>
+          <p>Évaluez l'impact de la communication sur votre travail</p>
+        </div>
+
+        <div class="likert-legend">
+          <span>1 = Pas du tout d'accord</span>
+          <span>4 = Tout à fait d'accord</span>
+        </div>
+
+        <!-- Q28 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q28.</span>
+            La qualité de communication influence positivement ma motivation
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q28" id="q28-1" value="1" required>
+              <label for="q28-1"><span class="value">1</span><span class="text">Pas du tout</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q28" id="q28-2" value="2">
+              <label for="q28-2"><span class="value">2</span><span class="text">Plutôt non</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q28" id="q28-3" value="3">
+              <label for="q28-3"><span class="value">3</span><span class="text">Plutôt oui</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q28" id="q28-4" value="4">
+              <label for="q28-4"><span class="value">4</span><span class="text">Tout à fait</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q29 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q29.</span>
+            Je me sens impliqué(e) dans les décisions qui concernnent mon travail
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q29" id="q29-1" value="1" required>
+              <label for="q29-1"><span class="value">1</span><span class="text">Pas du tout</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q29" id="q29-2" value="2">
+              <label for="q29-2"><span class="value">2</span><span class="text">Plutôt non</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q29" id="q29-3" value="3">
+              <label for="q29-3"><span class="value">3</span><span class="text">Plutôt oui</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q29" id="q29-4" value="4">
+              <label for="q29-4"><span class="value">4</span><span class="text">Tout à fait</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q30 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q30.</span>
+            La communication facilite la résolution des conflits dans mon équipe
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q30" id="q30-1" value="1" required>
+              <label for="q30-1"><span class="value">1</span><span class="text">Pas du tout</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q30" id="q30-2" value="2">
+              <label for="q30-2"><span class="value">2</span><span class="text">Plutôt non</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q30" id="q30-3" value="3">
+              <label for="q30-3"><span class="value">3</span><span class="text">Plutôt oui</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q30" id="q30-4" value="4">
+              <label for="q30-4"><span class="value">4</span><span class="text">Tout à fait</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q31 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q31.</span>
+            Je ressens un climat de confiance dans les échanges avec mon manager
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q31" id="q31-1" value="1" required>
+              <label for="q31-1"><span class="value">1</span><span class="text">Pas du tout</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q31" id="q31-2" value="2">
+              <label for="q31-2"><span class="value">2</span><span class="text">Plutôt non</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q31" id="q31-3" value="3">
+              <label for="q31-3"><span class="value">3</span><span class="text">Plutôt oui</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q31" id="q31-4" value="4">
+              <label for="q31-4"><span class="value">4</span><span class="text">Tout à fait</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q32 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q32.</span>
+            La communication contribue à mon sentiment d'appartenance à l'entreprise
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q32" id="q32-1" value="1" required>
+              <label for="q32-1"><span class="value">1</span><span class="text">Pas du tout</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q32" id="q32-2" value="2">
+              <label for="q32-2"><span class="value">2</span><span class="text">Plutôt non</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q32" id="q32-3" value="3">
+              <label for="q32-3"><span class="value">3</span><span class="text">Plutôt oui</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q32" id="q32-4" value="4">
+              <label for="q32-4"><span class="value">4</span><span class="text">Tout à fait</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q33 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q33.</span>
+            Globalement, je suis satisfait(e) de la communication dans mon entreprise
+          </label>
+          <div class="likert-scale">
+            <div class="likert-option">
+              <input type="radio" name="q33" id="q33-1" value="1" required>
+              <label for="q33-1"><span class="value">1</span><span class="text">Pas du tout</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q33" id="q33-2" value="2">
+              <label for="q33-2"><span class="value">2</span><span class="text">Plutôt non</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q33" id="q33-3" value="3">
+              <label for="q33-3"><span class="value">3</span><span class="text">Plutôt oui</span></label>
+            </div>
+            <div class="likert-option">
+              <input type="radio" name="q33" id="q33-4" value="4">
+              <label for="q33-4"><span class="value">4</span><span class="text">Tout à fait</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION VII : Questions ouvertes (Q34-Q35) -->
+      <div class="section">
+        <div class="section-header">
+          <h2>Section VII - Questions ouvertes</h2>
+          <p>Exprimez-vous librement sur votre expérience</p>
+        </div>
+
+        <!-- Q34 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q34.</span>
+            Selon vous, quels sont les points forts de la communication dans votre entreprise ?
+          </label>
+          <textarea name="q34" id="q34" rows="5" placeholder="Décrivez les aspects positifs de la communication que vous observez..."></textarea>
+        </div>
+
+        <!-- Q35 -->
+        <div class="question-card">
+          <label class="question-label">
+            <span class="question-number">Q35.</span>
+            Quelles améliorations proposeriez-vous pour optimiser la communication managériale ?
+          </label>
+          <textarea name="q35" id="q35" rows="5" placeholder="Partagez vos suggestions et idées d'amélioration..."></textarea>
+        </div>
+      </div>
+
+      <!-- Bouton de soumission -->
+      <div class="form-actions">
+        <button type="submit" class="btn-submit" id="submitBtn">
+          Envoyer mes réponses
+        </button>
+      </div>
+
+    </form>
+
+    <!-- Message de succès -->
+    <div class="success-message" id="successMessage">
+      <h2>Merci pour votre participation !</h2>
+      <p>Vos réponses ont été enregistrées avec succès.</p>
+      <p style="margin-top: 1rem; color: #666;">Elles contribueront à l'amélioration des pratiques de communication managériale.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Questionnaire de Communication Managériale &copy; 2026 - GESI</p>
+    </footer>
+
+  </div>
+
+  <script src="form.js"></script>
+</body>
+</html>

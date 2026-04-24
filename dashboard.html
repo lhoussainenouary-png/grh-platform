@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de Bord - Communication Managériale</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- =====================================================
+       ÉCRAN DE CONNEXION
+       ===================================================== -->
+  <div class="login-container" id="loginContainer">
+    <div class="login-box">
+      <h2>Tableau de Bord</h2>
+      <p class="subtitle">Questionnaire de Communication Managériale</p>
+
+      <form class="login-form" id="loginForm">
+        <input
+          type="password"
+          id="passwordInput"
+          placeholder="Mot de passe"
+          required
+          autocomplete="current-password"
+        >
+        <button type="submit" class="btn-submit">
+          Se connecter
+        </button>
+        <p class="error-message" id="loginError">
+          Mot de passe incorrect. Veuillez réessayer.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       TABLEAU DE BORD (caché par défaut)
+       ===================================================== -->
+  <div class="dashboard-container" id="dashboardContainer">
+
+    <!-- En-tête du dashboard -->
+    <header class="dashboard-header">
+      <h1>Tableau de Bord</h1>
+      <button class="btn-logout" id="logoutBtn">Déconnexion</button>
+    </header>
+
+    <!-- Indicateurs KPI -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <h3>Nombre total de réponses</h3>
+        <div class="value" id="totalResponses">-</div>
+      </div>
+      <div class="kpi-card">
+        <h3>Score moyen global</h3>
+        <div class="value" id="averageScore">-</div>
+      </div>
+      <div class="kpi-card">
+        <h3>Taux de participation</h3>
+        <div class="value" id="participationRate">-</div>
+      </div>
+    </div>
+
+    <!-- État de chargement -->
+    <div class="dashboard-loading" id="loadingState">
+      <div class="spinner"></div>
+      <p>Chargement des données...</p>
+    </div>
+
+    <!-- Grille des graphiques -->
+    <div class="charts-grid" id="chartsGrid" style="display: none;">
+
+      <!-- Graphique 1 : Répartition des filières (Pie Chart) -->
+      <div class="chart-card">
+        <h3>Répartition par Filière/Department</h3>
+        <canvas id="filiereChart"></canvas>
+      </div>
+
+      <!-- Graphique 2 : Niveau d'études (Bar Chart) -->
+      <div class="chart-card">
+        <h3>Répartition par Niveau d'Études</h3>
+        <canvas id="niveauEtudesChart"></canvas>
+      </div>
+
+      <!-- Graphique 3 : Ancienneté (Doughnut Chart) -->
+      <div class="chart-card">
+        <h3>Répartition par Ancienneté</h3>
+        <canvas id="ancienneteChart"></canvas>
+      </div>
+
+      <!-- Graphique 4 : Niveau hiérarchique (Pie Chart) -->
+      <div class="chart-card">
+        <h3>Répartition par Niveau Hiérarchique</h3>
+        <canvas id="hierarchiqueChart"></canvas>
+      </div>
+
+      <!-- Graphique 5 : Moyenne scores Clarté Communication (Radar Chart) -->
+      <div class="chart-card">
+        <h3>Clarté de la Communication (Q6-Q11)</h3>
+        <canvas id="clarteChart"></canvas>
+      </div>
+
+      <!-- Graphique 6 : Moyenne scores par section (Line Chart) -->
+      <div class="chart-card full-width">
+        <h3>Scores Moyens par Dimension de Communication</h3>
+        <canvas id="dimensionsChart"></canvas>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

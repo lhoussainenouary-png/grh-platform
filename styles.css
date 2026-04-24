@@ -1,0 +1,617 @@
+/* =====================================================
+   QUESTIONNAIRE DE COMMUNICATION MANAGÉRIALE - STYLES
+   Thème élégant et moderne
+   ===================================================== */
+
+/* --- Import des polices Google --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:opsz,wght@9..40,300;400;500;600&display=swap');
+
+/* --- Variables CSS (Palette de couleurs) --- */
+:root {
+  --ink: #1a1a2e;        /* Bleu nuit profond - texte principal */
+  --cream: #f5f0e8;      /* Crème clair - fond */
+  --gold: #c9a84c;       /* Doré - accents, boutons */
+  --rust: #8b3a3a;       /* Rouille - erreurs, alertes */
+  --sage: #4a6741;       /* Sauge - succès, validations */
+  --white: #ffffff;
+  --shadow: rgba(26, 26, 46, 0.1);
+  --shadow-hover: rgba(26, 26, 46, 0.2);
+  --transition: all 0.3s ease;
+}
+
+/* --- Reset et base --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--cream);
+  color: var(--ink);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* --- Container principal --- */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* --- En-tête --- */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid var(--gold);
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.header .subtitle {
+  font-size: 1.1rem;
+  color: var(--rust);
+  font-style: italic;
+}
+
+.header .description {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  color: var(--ink);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Sections du formulaire --- */
+.section {
+  margin-bottom: 3rem;
+}
+
+.section-header {
+  background: linear-gradient(135deg, var(--ink) 0%, #2d2d44 100%);
+  color: var(--cream);
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px 12px 0 0;
+  margin-bottom: 0;
+}
+
+.section-header h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+}
+
+.section-header p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* --- Cartes de questions --- */
+.question-card {
+  background: var(--white);
+  padding: 1.5rem;
+  margin: 0;
+  border-left: 4px solid var(--gold);
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: var(--transition);
+}
+
+.question-card:hover {
+  box-shadow: 0 6px 20px var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.question-card + .question-card {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.question-label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.question-number {
+  color: var(--gold);
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+/* --- Selects --- */
+select {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: var(--white);
+  cursor: pointer;
+  transition: var(--transition);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231a1a2e' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.2);
+}
+
+select option {
+  padding: 0.5rem;
+}
+
+/* --- Échelle de Likert --- */
+.likert-scale {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.likert-option {
+  flex: 1;
+  min-width: 60px;
+  position: relative;
+}
+
+.likert-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.likert-option label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 0.5rem;
+  background: #f8f8f8;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  min-height: 70px;
+}
+
+.likert-option label .value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+}
+
+.likert-option label .text {
+  font-size: 0.7rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* États des boutons radio */
+.likert-option input[type="radio"]:checked + label {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--white);
+}
+
+.likert-option input[type="radio"]:checked + label .value,
+.likert-option input[type="radio"]:checked + label .text {
+  color: var(--white);
+}
+
+.likert-option input[type="radio"]:focus + label {
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.3);
+}
+
+.likert-option label:hover {
+  border-color: var(--gold);
+  background: #fff9e6;
+}
+
+/* Légende de l'échelle */
+.likert-legend {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: #666;
+  padding: 0.5rem 0;
+}
+
+/* --- Textareas --- */
+textarea {
+  width: 100%;
+  padding: 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  resize: vertical;
+  min-height: 120px;
+  transition: var(--transition);
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.2);
+}
+
+textarea::placeholder {
+  color: #999;
+}
+
+/* --- Bouton de soumission --- */
+.form-actions {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--gold);
+}
+
+.btn-submit {
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--gold) 0%, #b8963c 100%);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(201, 168, 76, 0.3);
+}
+
+.btn-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(201, 168, 76, 0.4);
+}
+
+.btn-submit:active {
+  transform: translateY(-1px);
+}
+
+.btn-submit:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* --- Message de succès --- */
+.success-message {
+  display: none;
+  text-align: center;
+  padding: 3rem;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px var(--shadow);
+  border-left: 5px solid var(--sage);
+}
+
+.success-message h2 {
+  color: var(--sage);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.success-message p {
+  font-size: 1.1rem;
+  color: var(--ink);
+}
+
+/* --- Loading spinner --- */
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--white);
+  animation: spin 0.8s linear infinite;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --- Footer --- */
+.footer {
+  text-align: center;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #ddd;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem 1rem;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .question-card {
+    padding: 1.25rem;
+  }
+
+  .likert-scale {
+    gap: 0.25rem;
+  }
+
+  .likert-option {
+    min-width: 45px;
+  }
+
+  .likert-option label {
+    padding: 0.5rem 0.25rem;
+    min-height: 55px;
+  }
+
+  .likert-option label .value {
+    font-size: 1rem;
+  }
+
+  .likert-option label .text {
+    font-size: 0.6rem;
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .likert-option {
+    min-width: 38px;
+  }
+
+  .likert-option label {
+    padding: 0.4rem 0.2rem;
+    min-height: 50px;
+    border-radius: 6px;
+  }
+
+  .likert-option label .value {
+    font-size: 0.9rem;
+  }
+
+  .likert-option label .text {
+    display: none; /* Cache le texte sur très petits écrans */
+  }
+}
+
+/* =====================================================
+   STYLES DU DASHBOARD
+   ===================================================== */
+
+/* --- Login Screen --- */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--ink) 0%, #2d2d44 100%);
+}
+
+.login-box {
+  background: var(--white);
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.login-box h2 {
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.login-box .subtitle {
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-form input[type="password"] {
+  padding: 1rem;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  transition: var(--transition);
+}
+
+.login-form input[type="password"]:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.2);
+}
+
+.login-form .error-message {
+  color: var(--rust);
+  font-size: 0.9rem;
+  display: none;
+  padding: 0.5rem;
+  background: rgba(139, 58, 58, 0.1);
+  border-radius: 6px;
+}
+
+/* --- Dashboard Container --- */
+.dashboard-container {
+  display: none;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--gold);
+}
+
+.dashboard-header h1 {
+  color: var(--ink);
+}
+
+.btn-logout {
+  padding: 0.75rem 1.5rem;
+  background: var(--rust);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.btn-logout:hover {
+  background: #7a2f2f;
+}
+
+/* --- KPI Cards --- */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.kpi-card {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px var(--shadow);
+  border-left: 5px solid var(--gold);
+}
+
+.kpi-card h3 {
+  font-size: 0.9rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.kpi-card .value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  font-family: 'Playfair Display', serif;
+}
+
+/* --- Charts Grid --- */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.chart-card {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px var(--shadow);
+}
+
+.chart-card h3 {
+  font-size: 1.1rem;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #eee;
+}
+
+.chart-card canvas {
+  max-height: 350px;
+}
+
+/* --- Full-width chart --- */
+.chart-card.full-width {
+  grid-column: 1 / -1;
+}
+
+/* --- Loading state --- */
+.dashboard-loading {
+  text-align: center;
+  padding: 4rem;
+}
+
+.dashboard-loading .spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--gold);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1.5rem;
+}
+
+/* --- Responsive Dashboard --- */
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+}
