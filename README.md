@@ -74,18 +74,21 @@ Platforme/
 - **Q4** : Niveau hiérarchique
 - **Q5** : Tranche d'âge
 
-### Questions d'Échelle (Q6-Q33) - Échelle Likert 1-4
-| Dimension | Questions | Description |
-|-----------|-----------|-------------|
-| Clarté | Q6-Q11 | Objectifs, priorités, instructions, délais |
-| Écoute | Q12-Q17 | Attention, feedback, dialogue |
-| Transparence | Q18-Q23 | Information, décisions, processus |
-| Cohérence | Q24-Q29 | Messages, actions, comportement |
-| Accessibilité | Q30-Q33 | Disponibilité, proximité |
+### Questions d’échelle (Q6–Q25) — Likert 1–4 (Jamais → Toujours)
+| Dimension | Items | Description |
+|-----------|-------|-------------|
+| Clarté | Q6–Q9 | Objectifs, instructions, priorités, clarification |
+| Écoute active | Q10–Q13 | Écoute, suggestions, dialogue, feedback |
+| Transparence | Q14–Q17 | Information, décisions, difficultés, changements |
+| Cohérence | Q18–Q21 | Paroles / actes, équité, engagements |
+| Accessibilité | Q22–Q25 | Joignabilité, climat, temps, sollicitation |
 
-### Questions Ouvertes (Q34-Q35)
-- **Q34** : Points forts de la communication
-- **Q35** : Améliorations proposées
+### Questions ouvertes (Q26–Q27), optionnelles
+- **Q26** : Points forts (texte libre, 500 car. max)
+- **Q27** : Améliorations suggérées (texte libre, 500 car. max)
+
+### En-têtes dans Google Sheets
+La **première ligne** du tableur utilise le **libellé exact de chaque question** comme nom de colonne (plus lisible que `Q1_Filiere`, etc.). La liste canonique est dans [`lib/surveySheetHeaders.js`](lib/surveySheetHeaders.js) ; le script [`google-script.gs`](google-script.gs) crée la même ligne d’en-têtes lors du premier enregistrement (`doPost` sur une feuille vide).
 
 ## ⚙️ Configuration
 
@@ -104,10 +107,7 @@ PASSWORD=GESI2026
 
 ### Configuration Google Sheets
 
-1. **Créer un Google Sheet** avec les en-têtes :
-   ```
-   Date/Heure, Q1_Filiere, Q2_Niveau_Etudes, Q3_Anciennete, Q4_Niveau_Hierarchique, Q5_Age, Q6-Q35, Q34_Points_Forts, Q35_Ameliorations
-   ```
+1. **Google Sheet** : laissez la feuille vide avant le premier envoi du formulaire ; `google-script.gs` ajoute automatiquement la ligne d’en-têtes (`Date/Heure` + texte des 27 questions). Vous pouvez aussi copier la première ligne depuis `SHEET_HEADERS_ROW` dans `lib/surveySheetHeaders.js`.
 
 2. **Déployer Google Apps Script** :
    - Extensions > Apps Script

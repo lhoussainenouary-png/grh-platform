@@ -454,6 +454,163 @@ select:focus {
   grid-column: 1 / -1;
 }
 
+.chartInsight {
+  font-size: 0.88rem;
+  color: #555;
+  line-height: 1.55;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, #faf8f3 0%, #f0ebe3 100%);
+  border-radius: 8px;
+  border-left: 3px solid var(--gold);
+}
+
+.chartCardLift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.chartCardLift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px var(--shadow-hover);
+}
+
+.kpiHint {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.75rem;
+  line-height: 1.45;
+}
+
+.kpiCardLift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kpiCardLift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--shadow-hover);
+}
+
+.kaiserBanner {
+  margin: 1.5rem 2rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.kaiserBanner strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-family: var(--font-playfair), 'Playfair Display', serif;
+}
+
+.kaiserBannerDetail {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  opacity: 0.95;
+}
+
+.kaiserBanner--high {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  color: #1b4332;
+  border: 1px solid #95d5b2;
+}
+
+.kaiserBanner--medium {
+  background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+  color: #5d4037;
+  border: 1px solid #ffd54f;
+}
+
+.kaiserBanner--low {
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+  color: #4a148c;
+  border: 1px solid #e57373;
+}
+
+.sciencePanel {
+  margin: 2rem;
+  padding: 1.5rem;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px var(--shadow);
+}
+
+.sciencePanelTitle {
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.sciencePanelIntro {
+  font-size: 0.92rem;
+  color: #555;
+  margin-bottom: 1.25rem;
+  max-width: 900px;
+}
+
+.cronbachGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.cronbachCard {
+  padding: 1rem;
+  border-radius: 10px;
+  background: var(--surface-light-alt);
+  border: 1px solid #e0dcd4;
+}
+
+.cronbachCard h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+  font-family: var(--font-inter), 'DM Sans', sans-serif;
+}
+
+.cronbachAlpha {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.cronbachInterp {
+  font-size: 0.78rem;
+  color: #666;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+.sentimentPanel {
+  margin-top: 0;
+}
+
+.sentimentBtn {
+  margin: 0 0 1rem;
+  max-width: 420px;
+}
+
+.sentimentOutput {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f8f6f1;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.sentimentSummary {
+  margin: 0.75rem 0;
+}
+
+.toneList {
+  margin: 0.5rem 0 0.75rem 1.25rem;
+}
+
+.sentimentCaveat {
+  margin-top: 0.75rem;
+  color: #555;
+}
+
 .dashboardLoading {
   text-align: center;
   padding: 3rem;
@@ -478,4 +635,170 @@ select:focus {
   font-size: 0.8rem;
   color: #666;
   border-bottom: 1px solid #ddd;
+}
+
+/* --- Survey wizard (v2) --- */
+.surveyProgressWrap {
+  max-width: 900px;
+  margin: 0 auto 0.5rem;
+  height: 6px;
+  background: #e4dfd6;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.surveyProgressBar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--sage), var(--gold));
+  border-radius: 6px;
+  transition: width 0.35s ease;
+}
+
+.surveyStepMeta {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-on-light-muted);
+  margin-bottom: 1.25rem;
+}
+
+.surveyHero {
+  display: grid;
+  grid-template-columns: minmax(100px, 140px) 1fr;
+  gap: 1.25rem;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .surveyHero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .surveyMascotWrap {
+    margin: 0 auto;
+  }
+}
+
+.surveyMascotWrap {
+  animation: mascotEnter 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes mascotEnter {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.surveyMascotSvg {
+  width: 100%;
+  max-width: 132px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 6px 12px rgba(26, 26, 46, 0.12));
+}
+
+.surveySectionHeaderInline {
+  border-radius: 12px;
+  margin-bottom: 0;
+}
+
+.surveyStepSection {
+  margin-bottom: 1.5rem;
+}
+
+.likertLegendStandalone {
+  border-radius: 0;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  margin: 0;
+}
+
+.surveyTextarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-family: var(--font-inter), 'DM Sans', sans-serif;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  resize: vertical;
+  min-height: 100px;
+  transition: var(--transition);
+}
+
+.surveyTextarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.2);
+}
+
+.surveyCharCount {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.35rem;
+  text-align: right;
+}
+
+.surveyStepError {
+  color: var(--rust);
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.surveyNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+}
+
+.surveyNavBtn {
+  padding: 0.85rem 1.75rem;
+  font-family: var(--font-inter), 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--gold) 0%, #d4b35a 100%);
+  color: var(--ink);
+  transition: var(--transition);
+}
+
+.surveyNavBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(201, 168, 76, 0.35);
+}
+
+.surveyNavBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.surveyNavBtnSecondary {
+  background: var(--white);
+  border: 2px solid var(--ink);
+  color: var(--ink);
+}
+
+.surveyNavBtnSecondary:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--cream);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.surveyNavSubmit {
+  margin: 0;
+  max-width: none;
+  width: auto;
+  min-width: 220px;
 }

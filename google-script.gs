@@ -1,49 +1,48 @@
 /**
- * google-script.gs - Google Apps Script
- * Ce code doit être déployé dans un Google Apps Script lié à un Google Sheet
- *
- * Instructions d'installation :
- * 1. Créez un nouveau Google Sheet
- * 2. Allez dans Extensions > Apps Script
- * 3. Copiez-collez ce code
- * 4. Déployez en tant que application web (Déployer > Nouveau déploiement > Application web)
- * 5. Configurez l'accès : "Tout le monde" (Anyone)
- * 6. Copiez l'URL de déploiement et collez-la dans form.js (GOOGLE_SCRIPT_URL)
+ * google-script.gs — Google Apps Script (v2 questionnaire, Q1–Q27)
+ * Les en-têtes de colonnes reprennent le libellé des questions (lisible dans la feuille).
+ * Garder cette liste alignée avec lib/surveySheetHeaders.js (copier-coller si vous modifiez les questions).
  */
 
-/**
- * Gère les requêtes POST depuis le formulaire HTML
- * @param {Object} e - Événement contenant les paramètres du formulaire
- * @returns {Object} Réponse JSON avec statut et message
- */
 function doPost(e) {
-  // Récupère la feuille de calcul active
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
 
-  // Vérifie si la première ligne contient les en-têtes, sinon les ajoute
   if (sheet.getLastRow() === 0) {
     var headers = [
       'Date/Heure',
-      'Q1_Filiere',
-      'Q2_Niveau_Etudes',
-      'Q3_Anciennete',
-      'Q4_Niveau_Hierarchique',
-      'Q5_Age',
-      'Q6', 'Q7', 'Q8', 'Q9', 'Q10', 'Q11',
-      'Q12', 'Q13', 'Q14', 'Q15', 'Q16',
-      'Q17', 'Q18', 'Q19', 'Q20', 'Q21',
-      'Q22', 'Q23', 'Q24', 'Q25', 'Q26', 'Q27',
-      'Q28', 'Q29', 'Q30', 'Q31', 'Q32', 'Q33',
-      'Q34_Points_Forts',
-      'Q35_Ameliorations'
+      'Sélectionnez votre département :',
+      'Quel est votre niveau de formation le plus élevé ?',
+      'Depuis combien de temps travaillez-vous dans cette organisation ?',
+      'Quel est votre niveau dans l\'organisation ?',
+      'Quelle est votre tranche d\'âge ?',
+      'Mon manager formule des objectifs de travail clairs et compréhensibles.',
+      'Les instructions transmises par mon manager sont précises et sans ambiguïté.',
+      'Mon manager communique les priorités et les délais de manière explicite.',
+      'En cas d\'incompréhension, mon manager reformule et clarifie sans difficulté.',
+      'Mon manager écoute attentivement lorsque je lui fais part d\'un problème.',
+      'Mon manager prend en compte mes suggestions dans ses décisions.',
+      'Mon manager encourage le dialogue et les échanges ouverts au sein de l\'équipe.',
+      'Mon manager me donne un feedback constructif sur mon travail régulièrement.',
+      'Mon manager partage les informations importantes concernant l\'organisation en temps utile.',
+      'Mon manager explique les raisons derrière les décisions prises.',
+      'Mon manager communique ouvertement sur les difficultés et les enjeux de l\'équipe.',
+      'Mon manager informe l\'équipe des changements organisationnels avant leur mise en œuvre.',
+      'Le comportement de mon manager est cohérent avec ses paroles.',
+      'Mon manager applique les mêmes règles pour tous les membres de l\'équipe.',
+      'Les engagements pris par mon manager sont respectés.',
+      'La communication de mon manager ne change pas selon les interlocuteurs de manière injustifiée.',
+      'Mon manager est facilement joignable lorsque j\'en ai besoin.',
+      'Mon manager crée un environnement dans lequel je me sens à l\'aise pour m\'exprimer.',
+      'Mon manager prend le temps nécessaire pour discuter avec moi des sujets importants.',
+      'Je n\'hésite pas à contacter mon manager en cas de problème professionnel.',
+      'Selon vous, quels sont les points forts de la communication managériale au sein de votre organisation ?',
+      'Quelles améliorations concrètes suggérez-vous pour améliorer la communication de votre manager ?'
     ];
     sheet.appendRow(headers);
   }
 
-  // Récupère la date et heure actuelles
   var timestamp = new Date();
 
-  // Construit la ligne de données
   var rowData = [
     timestamp,
     e.parameter.q1 || '',
@@ -72,47 +71,29 @@ function doPost(e) {
     e.parameter.q24 || '',
     e.parameter.q25 || '',
     e.parameter.q26 || '',
-    e.parameter.q27 || '',
-    e.parameter.q28 || '',
-    e.parameter.q29 || '',
-    e.parameter.q30 || '',
-    e.parameter.q31 || '',
-    e.parameter.q32 || '',
-    e.parameter.q33 || '',
-    e.parameter.q34 || '',
-    e.parameter.q35 || ''
+    e.parameter.q27 || ''
   ];
 
-  // Ajoute la ligne à la feuille
   sheet.appendRow(rowData);
 
-  // Prépare la réponse JSON
   var response = {
     status: 'success',
     message: 'Données enregistrées avec succès'
   };
 
-  // Retourne la réponse avec les en-têtes CORS appropriés
   return ContentService
     .createTextOutput(JSON.stringify(response))
     .setMimeType(ContentService.MimeType.JSON);
 }
 
-/**
- * Fonction utilitaire pour récupérer les données sous forme CSV
- * Utile pour le dashboard
- * @returns {Object} Contenu CSV
- */
 function doGet(e) {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   var data = sheet.getDataRange().getValues();
 
-  // Convertit les données en CSV
   var csv = data.map(function(row) {
     return row.map(function(cell) {
-      // Échappe les virgules et guillemets dans les cellules
       var cellStr = String(cell);
-      if (cellStr.includes(',') || cellStr.includes('"') || cellStr.includes('\n')) {
+      if (cellStr.indexOf(',') !== -1 || cellStr.indexOf('"') !== -1 || cellStr.indexOf('\n') !== -1) {
         cellStr = '"' + cellStr.replace(/"/g, '""') + '"';
       }
       return cellStr;

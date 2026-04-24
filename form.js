@@ -6,7 +6,8 @@
 // =====================================================
 // CONFIGURATION - À modifier avec votre URL Google Apps Script
 // =====================================================
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby9rE7S8RKqsdbIN0oTGWEzvQ4ouKIqjZ0t7ic_nJwUZXMAzMBLacpaSFzg0yYyv7FJ5g/exec';
+// Préférez le questionnaire Next.js (/survey) avec NEXT_PUBLIC_GOOGLE_SCRIPT_URL dans .env.local
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/VOTRE_NOUVEAU_DEPLOIEMENT/exec';
 
 // =====================================================
 // Éléments du DOM
