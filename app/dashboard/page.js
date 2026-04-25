@@ -15,6 +15,7 @@ import {
   Filler
 } from 'chart.js'
 import { Pie, Bar, Doughnut, Radar, Line } from 'react-chartjs-2'
+import DownloadReportButton from '@/app/components/DownloadReportButton'
 import { parseCsv, rowsToObjects } from '@/lib/csvParse'
 import {
   LIKERT_KEYS,
@@ -151,6 +152,46 @@ export default function DashboardPage() {
   const dimMeans = useMemo(() => (data ? dimensionSampleMeans(data) : null), [data])
   const cronbach = useMemo(() => (data ? cronbachPerDimension(data) : null), [data])
   const qMeans = useMemo(() => (data ? perQuestionMeans(data) : []), [data])
+
+  // Find the lowest-scoring dimension
+  const lowestDim = useMemo(() => {
+    if (!dimMeans) return null
+    let lowest = null
+    let lowestVal = Infinity
+    for (const d of DIMENSION_ORDER) {
+      if (dimMeans[d] != null && dimMeans[d] < lowestVal) {
+        lowestVal = dimMeans[d]
+        lowest = d
+      }
+    }
+    return lowest
+  }, [dimMeans])
+
+  const kpis = [
+    { label: 'Nb. de Réponses', value: String(n), sub: 'répondants' },
+    { label: 'Score Moyen Global', value: likertMean != null ? likertMean.toFixed(2) : '—', sub: '/ 4.0' },
+    {
+      label: 'IQC Moyen',
+      value: iqcMean != null ? iqcMean.toFixed(2) : '—',
+      sub: 'indice pondéré'
+    },
+    {
+      label: 'Dimension Critique',
+      value: lowestDim ? DIMENSION_LABELS_FR[lowestDim] : '—',
+      sub: lowestDim && dimMeans ? `(score : ${dimMeans[lowestDim].toFixed(2)})` : ''
+    },
+  ]
+
+  const charts = [
+    { title: 'Répartition par département', canvasId: 'pieDepartement' },
+    { title: 'Répartition par niveau de formation', canvasId: 'barFormation' },
+    { title: 'Répartition par ancienneté', canvasId: 'doughnutAnciennete' },
+    { title: 'Répartition par niveau hiérarchique', canvasId: 'pieHierarchie' },
+    { title: 'Répartition par tranche d\'âge', canvasId: 'barAge' },
+    { title: 'Profil des cinq dimensions (radar)', canvasId: 'radarDimensions' },
+    { title: 'Moyenne par item (Q6 à Q25)', canvasId: 'linePerQuestion' },
+    { title: 'Distribution de l\'IQC pondéré', canvasId: 'barIQC' },
+  ]
 
   const alphaOkCount = useMemo(() => {
     if (!cronbach) return 0
@@ -292,9 +333,16 @@ export default function DashboardPage() {
     <div className="dashboardContainer show">
       <header className="dashboardHeader">
         <h1>Tableau de bord</h1>
-        <button type="button" className="btnLogout" onClick={handleLogout}>
-          Déconnexion
-        </button>
+        <div className="dashboardHeaderActions">
+          <DownloadReportButton
+            kpis={kpis}
+            charts={charts}
+            orgName="Communication Managériale"
+          />
+          <button type="button" className="btnLogout" onClick={handleLogout}>
+            Déconnexion
+          </button>
+        </div>
       </header>
 
       {loading ? (
@@ -412,7 +460,7 @@ export default function DashboardPage() {
                 sont regroupés sous « Masqué » pour limiter le risque de réidentification (règle ≤5 répondants par
                 modalité).
               </p>
-              <Pie data={chartFromCounts(countsWithAnonymity(data || [], DEMO_HEADERS[0]))} />
+              <Pie id="pieDepartement" data={chartFromCounts(countsWithAnonymity(data || [], DEMO_HEADERS[0]))} />
             </div>
 
             <div className="chartCard chartCardLift">
@@ -421,7 +469,7 @@ export default function DashboardPage() {
                 <strong>À quoi ça sert ?</strong> Vérifier si la perception de la communication managériale varie selon
                 le capital formation — utile pour cibler des actions pédagogiques.
               </p>
-              <Bar data={chartFromCounts(countsWithAnonymity(data || [], DEMO_HEADERS[1]))} options={{ indexAxis: 'y' }} />
+              <Bar id="barFormation" data={chartFromCounts(countsWithAnonymity(data || [], DEMO_HEADERS[1]))} options={{ indexAxis: 'y' }} />
             </div>
 
             <div className="chartCard chartCardLift">
@@ -430,7 +478,7 @@ export default function DashboardPage() {
                 <strong>À quoi ça sert ?</strong> Les nouveaux arrivants peuvent juger la communication différemment des
                 tenured ; utile pour plans d’intégration.
               </p>
-              <Doughnut data={chartFromCounts(countsWithAnonymity(data || [], DEMO_HEADERS[2]))} />
+              <Doughnut id="doughnutAnciennete" data={chartFromCounts(countsWithAnonymity(data || [], DEMO_HEADERS[2]))} />
             </div>
 
             <div className="chartCard chartCardLift">
@@ -439,7 +487,7 @@ export default function DashboardPage() {
                 <strong>À quoi ça sert ?</strong> Comparer les attentes entre opérationnels et encadrement ; attention à
                 l’anonymat sur les strates peu peuplées.
               </p>
-              <Pie data={chartFromCounts(countsWithAnonymity(data || [], DEMO_HEADERS[3]))} />
+              <Pie id="pieHierarchie" data={chartFromCounts(countsWithAnonymity(data || [], DEMO_HEADERS[3]))} />
             </div>
 
             <div className="chartCard chartCardLift">
@@ -448,7 +496,7 @@ export default function DashboardPage() {
                 <strong>À quoi ça sert ?</strong> Contextualiser les résultats (générations, habitudes de feedback) sans
                 tirer de conclusions causales trop hâtives.
               </p>
-              <Bar data={chartFromCounts(countsWithAnonymity(data || [], DEMO_HEADERS[4]))} />
+              <Bar id="barAge" data={chartFromCounts(countsWithAnonymity(data || [], DEMO_HEADERS[4]))} />
             </div>
 
             <div className="chartCard chartCardLift">
@@ -457,7 +505,7 @@ export default function DashboardPage() {
                 <strong>À quoi ça sert ?</strong> Vue synthétique des forces et faiblesses relatives : où investir en
                 premier (dimension la plus basse) par rapport à la moyenne de l’échantillon.
               </p>
-              <Radar data={radarData} options={{ scales: { r: { min: 1, max: 4, ticks: { stepSize: 0.5 } } } }} />
+              <Radar id="radarDimensions" data={radarData} options={{ scales: { r: { min: 1, max: 4, ticks: { stepSize: 0.5 } } } }} />
             </div>
 
             <div className="chartCard chartCardLift fullWidth">
@@ -467,6 +515,7 @@ export default function DashboardPage() {
                 utile pour reformuler des items ou approfondir en entretiens qualitatifs.
               </p>
               <Line
+                id="linePerQuestion"
                 data={linePerQuestionData}
                 options={{
                   scales: {
@@ -483,7 +532,7 @@ export default function DashboardPage() {
                 <strong>À quoi ça sert ?</strong> Voir si les scores se concentrent au milieu ou s’étalent : une masse à
                 gauche signale une communication managériale vécue comme faible par une large partie des répondants.
               </p>
-              <Bar data={iqcHistogram} options={{ scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } }} />
+              <Bar id="barIQC" data={iqcHistogram} options={{ scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } }} />
             </div>
           </div>
         </>

@@ -1,0 +1,6 @@
+{
+  "/page": "app/page.js",
+  "/api/survey-sentiment/route": "app/api/survey-sentiment/route.js",
+  "/survey/page": "app/survey/page.js",
+  "/dashboard/page": "app/dashboard/page.js"
+}
