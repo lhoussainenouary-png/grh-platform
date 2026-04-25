@@ -268,7 +268,7 @@ export default function SurveyPage() {
         </div>
       </div>
 
-      <form id="surveyForm" onSubmit={step === totalSteps - 1 ? handleSubmit : (e) => e.preventDefault()}>
+      <form id="surveyForm" onSubmit={(e) => e.preventDefault()}>
         <div className="section surveyStepSection">
           {current.id !== 'profil' && current.id !== 'ouvert' && (
             <div className="likertLegend likertLegendStandalone">
@@ -354,7 +354,7 @@ export default function SurveyPage() {
               Suivant
             </button>
           ) : (
-            <button type="submit" className="surveyNavBtn submitBtn surveyNavSubmit" disabled={isLoading}>
+            <button type="button" className="surveyNavBtn submitBtn surveyNavSubmit" disabled={isLoading} onClick={handleSubmit}>
               {isLoading ? <span className="loading" /> : null}
               {isLoading ? 'Envoi en cours...' : 'Envoyer mes réponses'}
             </button>
