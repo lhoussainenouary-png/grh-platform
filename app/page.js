@@ -14,7 +14,7 @@ export default function Home() {
           <div className="navLinks">
             <Link href="/" className="navLink">Accueil</Link>
             <Link href="/context" className="navLink">Contexte</Link>
-            <Link href="/survey" className="navLink navLinkPrimary">Questionnaire</Link>
+            <Link href="/survey" className="navLink navLinkPrimary" title="Enquête terminée">Questionnaire ✕</Link>
             <Link href="/dashboard" className="navLink">Dashboard</Link>
           </div>
           <span className="navMeta">Communication Manageriale</span>
@@ -39,9 +39,15 @@ export default function Home() {
             Managériale
           </h1>
           <p className="heroSubtitle">
-            Un outil puissant pour mesurer, analyser et améliorer les pratiques
-            de communication au sein de votre organisation.
+            Merci à tous les participants. Nous analysons actuellement les données selon les <strong>5 dimensions mesurées</strong> pour un diagnostic approfondi.
           </p>
+          <div className="dimensionsInline">
+            <span className="dimTag">📊 Clarté</span>
+            <span className="dimTag">👂 Écoute</span>
+            <span className="dimTag">🔍 Transparence</span>
+            <span className="dimTag">⚖️ Cohérence</span>
+            <span className="dimTag">🤝 Accessibilité</span>
+          </div>
           <div className="heroActions">
             <Link href="/survey" className="btnPrimary">
               Remplir le Questionnaire
@@ -1256,7 +1262,23 @@ export default function Home() {
             grid-template-columns: 1fr;
           }
         }
-      `}</style>
+      
+        .dimensionsInline {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.75rem;
+          justify-content: center;
+          margin: 1.5rem 0 2rem;
+        }
+        .dimTag {
+          background: rgba(201, 168, 76, 0.2);
+          border: 1px solid var(--gold);
+          color: var(--gold);
+          padding: 0.5rem 1rem;
+          border-radius: 999px;
+          font-size: 0.9rem;
+          font-weight: 500;
+        }`}</style>
     </main>
   )
 }

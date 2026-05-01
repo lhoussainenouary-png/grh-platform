@@ -1,8 +1,10 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
+import Link from 'next/link'
 import SurveyMascot from './SurveyMascot'
 
+const SURVEY_PHASE_COMPLETE = true
 const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || ''
 
 const likertOptions = [
@@ -167,6 +169,32 @@ function validateStep(stepIndex, formData) {
 }
 
 export default function SurveyPage() {
+  const [isClosed, setIsClosed] = useState(SURVEY_PHASE_COMPLETE);
+
+  if (isClosed) {
+    return (
+      <div className="container closedSurveyWrap">
+        <nav className="closedSurveyNav">
+          <Link href="/" className="closedBackLink">
+            <span className="closedBackArrow">&#8592;</span> Retour &agrave; l&apos;accueil
+          </Link>
+        </nav>
+        <div className="closedSurveyContent">
+          <div className="closedSurveyIcon">&#128274;</div>
+          <h1 className="closedSurveyTitle">Enqu&ecirc;te termin&eacute;e</h1>
+          <p className="closedSurveyText">
+            Merci pour votre int&eacute;r&ecirc;t. La phase de collecte de donn&eacute;es pour cette enqu&ecirc;te est d&eacute;sormais close.
+            Nous vous informerons d&egrave;s que les r&eacute;sultats seront disponibles sur cette plateforme.
+          </p>
+          <Link href="/" className="closedSurveyHomeBtn">
+            Retour &agrave; l&apos;accueil
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+
   const [step, setStep] = useState(0)
   const [formData, setFormData] = useState({})
   const [isLoading, setIsLoading] = useState(false)

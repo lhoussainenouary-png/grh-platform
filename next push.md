@@ -1,3 +1,3 @@
 git add .
-git commit -m "Describe what you changed here"
+git commit -m "fix the survey page"
 git push origin main

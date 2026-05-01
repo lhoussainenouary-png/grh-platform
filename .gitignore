@@ -8,7 +8,8 @@
 # Fichiers temporaires
 *.tmp
 *.log
-
+.next
+.claude
 # OS
 .DS_Store
 Thumbs.db
